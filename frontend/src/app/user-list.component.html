@@ -1,0 +1,17 @@
+<h2>Users</h2>
+
+<div *ngIf="error" style="color: red;">{{ error }}</div>
+<div *ngIf="loading">Loading users...</div>
+
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.name }}
+    <button (click)="deleteUser(user.id)">Delete</button>
+  </li>
+</ul>
+
+<form (ngSubmit)="addUser()" style="margin-top: 1rem;">
+  <input [(ngModel)]="newUser.name" name="name" placeholder="Enter user name" required />
+  <input [(ngModel)]="newUser.email" name="email" placeholder="Enter email" required type="email" />
+  <button type="submit">Add User</button>
+</form>
